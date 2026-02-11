@@ -144,6 +144,17 @@ button{
 }
 
 
+.final-pic img {
+  width: 300px;
+  margin-top: 30px;
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(255,105,180,0.7);
+  transition: 0.3s;
+}
+
+.final-pic img:hover {
+  transform: scale(1.05);
+}
 
 </style>
 </head>
@@ -192,16 +203,21 @@ function start(){
 
 function showContent(){
   document.getElementById("main").innerHTML = `
-    <h1>Salem 💖</h1>
+    <h1>Salem(the literal Love of my Life) 💖</h1>
 
     <div class="gallery">
       <img src="salem1.jpg">
       <img src="salem2.jpg">
+      <img src="salem3.jpg">
     </div>
 
     <div id="message"></div>
-    <h2>— Nahome 💙</h2>
-  `;
+  <h2>— Nahome 💙</h2>
+
+  <div class="final-pic">
+    <img src="salem3.jpg">
+  </div>
+`;
 
   createHearts();
 
@@ -270,6 +286,7 @@ document.addEventListener("click", function(e) {
 
 </body>
 </html>
+
 
 
 
