@@ -114,6 +114,35 @@ button{
     margin: 30px auto;
     line-height: 1.6;
 }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+    z-index: 999;
+}
+
+.overlay h1 {
+    font-size: 40px;
+    color: white;
+    text-shadow: 0 0 20px hotpink;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px hotpink; }
+    to { text-shadow: 0 0 30px deeppink; }
+}
+
 
 
 </style>
@@ -207,12 +236,19 @@ function typeMessage(text, elementId, speed = 40) {
       element.innerHTML += text.charAt(i);
       i++;
       setTimeout(typing, speed);
+    } else {
+      // When typing finishes
+      setTimeout(showFinalScreen, 1500);
     }
   }
 
   typing();
 }
-
+function showFinalScreen(){
+  const overlay = document.getElementById("finalScreen");
+  overlay.style.opacity = "1";
+  overlay.style.pointerEvents = "auto";
+}
 // Click Sparkles
 document.addEventListener("click", function(e) {
   const sparkle = document.createElement("div");
@@ -228,10 +264,13 @@ document.addEventListener("click", function(e) {
 });
 </script>
 
-
+<div class="overlay" id="finalScreen">
+    <h1>Salem… will you be mine? 💖</h1>
+</div>
 
 </body>
 </html>
+
 
 
 
