@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Salem 💖</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  text-align:center;
+  background: linear-gradient(135deg,#ff4d6d,#5dade2,#f7a8c7);
+  background-size:400% 400%;
+  animation: bg 8s infinite alternate;
+  color:white;
+  overflow:hidden;
+}
+
+@keyframes bg {
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+
+.card {
+  margin-top:100px;
+}
+
+button{
+  padding:12px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  margin:10px;
+  position:relative;
+}
+
+.yes{
+  background:#ff4d6d;
+  color:white;
+}
+
+.no{
+  background:#5dade2;
+  color:white;
+  position:absolute;
+}
+
+.gallery img{
+  width:220px;
+  margin:15px;
+  border-radius:20px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+.heart{
+  position:fixed;
+  font-size:20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh); opacity:1;}
+  100%{transform:translateY(-10vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="main">
+  <h1>Salem 💖</h1>
+  <p>Will you be my Valentine?</p>
+  <button class="yes" onclick="start()">Yes 💕</button>
+  <button class="no" id="noBtn">No 🙃</button>
+</div>
+
+<audio id="song">
+  <source src="letter-home.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", function(){
+  noBtn.style.left = Math.random()*300 + "px";
+  noBtn.style.top = Math.random()*200 + "px";
+});
+
+function start(){
+  document.getElementById("song").play();
+
+  document.getElementById("main").innerHTML = `
+    <h1>Loading happiness… 💖</h1>
+    <h2 id="count">3</h2>
+  `;
+
+  let c = 3;
+  let counter = document.getElementById("count");
+
+  let interval = setInterval(function(){
+    c--;
+    counter.innerText = c>0 ? c : "💙";
+    if(c==0){
+      clearInterval(interval);
+      showContent();
+    }
+  },1000);
+}
+
+function showContent(){
+  document.getElementById("main").innerHTML = `
+    <h1>Salem 💖</h1>
+    <div class="gallery">
+     <img src="salem1.JPG">
+     <img src="salem2.JPG">
+
+    </div>
+    <div id="letter"></div>
+    <h2>— Nahome 💙</h2>
+  `;
+
+  createHearts();
+  showLetter();
+}
+
+function showLetter(){
+  const paragraphs = [
+    "Heyyy Salem 😌❤️",
+    "I just wanted to remind you that I love you a lot… like A LOT.",
+    "You’re smart AND cute?? Just choose one please 😭❤️",
+    "Even when we’re not together, I still feel like you’re mine and I’m yours.",
+    "I love you Salem. Always. 💙",
+    "p.s. I'm so sorry that I couldn't do more, my coding skills aren't the best but I hope I could propose in some way."
+  ];
+
+  let i = 0;
+  const letterDiv = document.getElementById("letter");
+
+  function nextParagraph(){
+    if(i < paragraphs.length){
+      const p = document.createElement("p");
+      p.innerText = paragraphs[i];
+      letterDiv.appendChild(p);
+      i++;
+      setTimeout(nextParagraph, 1500);
+    }
+  }
+
+  nextParagraph();
+}
+
+function createHearts(){
+  for(let i=0;i<30;i++){
+    let heart = document.createElement("div");
+    heart.className="heart";
+    heart.innerText=Math.random()>0.5?"💖":"💙";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(heart);
+  }
+}
+</script>
+
+</body>
+</html>
