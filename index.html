@@ -133,6 +133,7 @@ button{
 </audio>
 
 <script>
+
 const noBtn = document.getElementById("noBtn");
 
 noBtn.addEventListener("mouseover", function(){
@@ -162,120 +163,77 @@ function start(){
 }
 
 function showContent(){
-    document.getElementById("main").innerHTML = `
-        <h1>Salem 💖</h1>
-        <div class="gallery">
-            <img src="salem1.jpg">
-            <img src="salem2.jpg">
-        </div>
-
-        <div id="message"></div>
-        <h2>— Nahome 💙</h2>
-    `;
-
-    createHearts();
-
-    typeMessage(
-        "Heyyy Salem 😌❤️\n\nI just wanted to remind you that I love you a lot… like A LOT.\n\nYou’re smart AND cute?? Choose one please 😭❤️\n\nEven when we’re not together, I still feel like you’re mine and I’m yours.\n\nI love you Salem. Always. 💙",
-        "message"
-    );
-}
-}
-
-function showLetter(){
-  const paragraphs = [
-    "Heyyy Salem 😌❤️",
-    "I just wanted to remind you that I love you a lot… like A LOT.",
-    "You’re smart AND cute?? Just choose one please 😭❤️",
-    "Even when we’re not together, I still feel like you’re mine and I’m yours.",
-    "I love you Salem. Always. 💙",
-    "p.s. I'm so sorry that I couldn't do more, my coding skills aren't the best but I hope I could propose in some way."
-  ];
-
-  let i = 0;
-  const letterDiv = document.getElementById("letter");
-
-  function nextParagraph(){
-    if(i < paragraphs.length){
-      const p = document.createElement("p");
-      p.innerText = paragraphs[i];
-      letterDiv.appendChild(p);
-      i++;
-      setTimeout(nextParagraph, 1500);
-    }
-  }
-
-  nextParagraph();
-}
-
-function createHearts(){
-  for(let i=0;i<30;i++){
-    let heart = document.createElement("div");
-    heart.className="heart";
-    heart.innerText=Math.random()>0.5?"💖":"💙";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.animationDuration=(Math.random()*3+3)+"s";
-    document.body.appendChild(heart);
-  }
-} 
-// Floating Hearts
-function createHearts() {
-    setInterval(() => {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = Math.random() * 20 + 15 + "px";
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 6000);
-    }, 500);
-}
+  document.getElementById("main").innerHTML = `
+    <h1>Salem 💖</h1>
+    <div class="gallery">
+      <img src="salem1.jpg">
+      <img src="salem2.jpg">
+    </div>
+    <div id="message"></div>
+    <h2>— Nahome 💙</h2>
+  `;
 
   createHearts();
 
-// Typewriter Effect
-function typeMessage(text, elementId, speed = 40) {
-    let i = 0;
-    const element = document.getElementById(elementId);
-    element.innerHTML = "";
-
-    function typing() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typing, speed);
-        }
-    }
-
-    typing();
+  typeMessage(
+    "Heyyy Salem 😌❤️\n\nI just wanted to remind you that I love you a lot… like A LOT.\n\nYou’re smart AND cute?? Choose one please 😭❤️\n\nEven when we’re not together, I still feel like you’re mine and I’m yours.\n\nI love you Salem. Always. 💙",
+    "message"
+  );
 }
 
-typeMessage(
-"Heyyy Salem 😌❤️\n\nI just wanted to remind you that I love you a lot… like A LOT.\n\nYou’re smart AND cute?? Choose one please 😭❤️\n\nEven when we’re not together, I still feel like you’re mine and I’m yours.\n\nI love you Salem. Always. 💙",
-"message"
-);
+// Floating Hearts
+function createHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = Math.random() > 0.5 ? "💖" : "💙";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }, 500);
+}
+
+// Typewriter Effect
+function typeMessage(text, elementId, speed = 40) {
+  let i = 0;
+  const element = document.getElementById(elementId);
+  element.innerHTML = "";
+
+  function typing() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+
+  typing();
+}
 
 // Click Sparkles
 document.addEventListener("click", function(e) {
-    const sparkle = document.createElement("div");
-    sparkle.innerHTML = "✨";
-    sparkle.style.position = "fixed";
-    sparkle.style.left = e.clientX + "px";
-    sparkle.style.top = e.clientY + "px";
-    sparkle.style.fontSize = "20px";
-    sparkle.style.pointerEvents = "none";
-    document.body.appendChild(sparkle);
+  const sparkle = document.createElement("div");
+  sparkle.innerHTML = "✨";
+  sparkle.style.position = "fixed";
+  sparkle.style.left = e.clientX + "px";
+  sparkle.style.top = e.clientY + "px";
+  sparkle.style.fontSize = "20px";
+  sparkle.style.pointerEvents = "none";
+  document.body.appendChild(sparkle);
 
-    setTimeout(() => sparkle.remove(), 1000);
+  setTimeout(() => sparkle.remove(), 1000);
 });
 
 </script>
 
+
 </body>
 </html>
+
 
 
 
