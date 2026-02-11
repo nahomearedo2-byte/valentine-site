@@ -133,7 +133,6 @@ button{
 </audio>
 
 <script>
-
 const noBtn = document.getElementById("noBtn");
 
 noBtn.addEventListener("mouseover", function(){
@@ -165,10 +164,12 @@ function start(){
 function showContent(){
   document.getElementById("main").innerHTML = `
     <h1>Salem 💖</h1>
+
     <div class="gallery">
       <img src="salem1.jpg">
       <img src="salem2.jpg">
     </div>
+
     <div id="message"></div>
     <h2>— Nahome 💙</h2>
   `;
@@ -181,8 +182,7 @@ function showContent(){
   );
 }
 
-// Floating Hearts
-function createHearts() {
+function createHearts(){
   setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -197,7 +197,6 @@ function createHearts() {
   }, 500);
 }
 
-// Typewriter Effect
 function typeMessage(text, elementId, speed = 40) {
   let i = 0;
   const element = document.getElementById(elementId);
@@ -227,12 +226,13 @@ document.addEventListener("click", function(e) {
 
   setTimeout(() => sparkle.remove(), 1000);
 });
-
 </script>
+
 
 
 </body>
 </html>
+
 
 
 
