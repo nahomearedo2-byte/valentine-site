@@ -76,6 +76,45 @@ button{
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
+  /* Floating Hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+/* Image Glow + Hover */
+.gallery img {
+    transition: all 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+}
+
+/* Typewriter Style */
+#message {
+    font-size: 20px;
+    max-width: 600px;
+    margin: 30px auto;
+    line-height: 1.6;
+}
+
 
 </style>
 </head>
@@ -130,7 +169,7 @@ function showContent(){
      <img src="salem2.jpg">
 
     </div>
-    <div id="letter"></div>
+    <div id="message"></div>
     <h2>— Nahome 💙</h2>
   `;
 
@@ -173,11 +212,66 @@ function createHearts(){
     heart.style.animationDuration=(Math.random()*3+3)+"s";
     document.body.appendChild(heart);
   }
+} 
+// Floating Hearts
+function createHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }, 500);
 }
+
+createHearts();
+
+// Typewriter Effect
+function typeMessage(text, elementId, speed = 40) {
+    let i = 0;
+    const element = document.getElementById(elementId);
+    element.innerHTML = "";
+
+    function typing() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+
+    typing();
+}
+
+typeMessage(
+"Heyyy Salem 😌❤️\n\nI just wanted to remind you that I love you a lot… like A LOT.\n\nYou’re smart AND cute?? Choose one please 😭❤️\n\nEven when we’re not together, I still feel like you’re mine and I’m yours.\n\nI love you Salem. Always. 💙",
+"message"
+);
+
+// Click Sparkles
+document.addEventListener("click", function(e) {
+    const sparkle = document.createElement("div");
+    sparkle.innerHTML = "✨";
+    sparkle.style.position = "fixed";
+    sparkle.style.left = e.clientX + "px";
+    sparkle.style.top = e.clientY + "px";
+    sparkle.style.fontSize = "20px";
+    sparkle.style.pointerEvents = "none";
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 1000);
+});
+
 </script>
 
 </body>
 </html>
+
 
 
 
