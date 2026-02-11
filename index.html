@@ -162,19 +162,24 @@ function start(){
 }
 
 function showContent(){
-  document.getElementById("main").innerHTML = `
-    <h1>Salem 💖</h1>
-    <div class="gallery">
-     <img src="salem1.jpg">
-     <img src="salem2.jpg">
+    document.getElementById("main").innerHTML = `
+        <h1>Salem 💖</h1>
+        <div class="gallery">
+            <img src="salem1.jpg">
+            <img src="salem2.jpg">
+        </div>
 
-    </div>
-    <div id="message"></div>
-    <h2>— Nahome 💙</h2>
-  `;
+        <div id="message"></div>
+        <h2>— Nahome 💙</h2>
+    `;
 
-  createHearts();
-  showLetter();
+    createHearts();
+
+    typeMessage(
+        "Heyyy Salem 😌❤️\n\nI just wanted to remind you that I love you a lot… like A LOT.\n\nYou’re smart AND cute?? Choose one please 😭❤️\n\nEven when we’re not together, I still feel like you’re mine and I’m yours.\n\nI love you Salem. Always. 💙",
+        "message"
+    );
+}
 }
 
 function showLetter(){
@@ -229,7 +234,7 @@ function createHearts() {
     }, 500);
 }
 
-createHearts();
+  createHearts();
 
 // Typewriter Effect
 function typeMessage(text, elementId, speed = 40) {
@@ -271,6 +276,7 @@ document.addEventListener("click", function(e) {
 
 </body>
 </html>
+
 
 
 
